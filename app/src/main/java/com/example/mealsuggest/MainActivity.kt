@@ -84,11 +84,11 @@ class MainActivity : ComponentActivity() {
                         Button(onClick = {
                             mealSuggestion = when(timeOfDay){
                                 "Morning" -> "Scrambled eggs with spinach, tomatoes, and whole-grain toast"
-                                "Mid-morning" -> "Greek yogurt with honey and berries"
+                                "Mid morning" -> "Greek yogurt with honey and berries"
                                 "Afternoon" -> "Grilled chicken salad with mixed greens, avocado, and a lemon vinaigrette"
-                                "Mid-afternoon" -> "Cottage cheese with sliced cucumber and a sprinkle of paprika"
+                                "Mid afternoon" -> "Cottage cheese with sliced cucumber and a sprinkle of paprika"
                                 "Evening" -> "Stir-fried beef with mixed vegetables"
-                                "Evening snack" -> "A handful of mixed nuts and dark chocolate"
+                                "Late evening" -> "A handful of mixed nuts and dark chocolate"
                                 else -> "Invalid time of day, please try the following: " +
                                         "\n - Morning" +
                                         "\n - Mid morning" +
@@ -121,6 +121,7 @@ class MainActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .padding(start = 25.dp)
                             .align(Alignment.Start),
+                        fontWeight = FontWeight.Medium,
                         text = "Meal Suggestion:",
                     )
 
