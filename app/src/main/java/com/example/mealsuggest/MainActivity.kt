@@ -63,6 +63,9 @@ class MainActivity : ComponentActivity() {
 
                     Spacer(modifier = Modifier.size(30.dp))
 
+                    // Text Field with auto capitalisation on phone keyboard
+                    // If you want capitalisation per word change Sentences to Words and
+                    // change meal output handler
                     OutlinedTextField(
                         modifier = Modifier
                             .clip(RoundedCornerShape(12.dp))
@@ -80,8 +83,10 @@ class MainActivity : ComponentActivity() {
 
                     Spacer(modifier = Modifier.size(10.dp))
 
+                    // Button Group
                     Row {
                         Button(onClick = {
+                            // Handles meal output according to time of day input
                             mealSuggestion = when(timeOfDay){
                                 "Morning" -> "Scrambled eggs with spinach, tomatoes, and whole-grain toast"
                                 "Mid morning" -> "Greek yogurt with honey and berries"
@@ -106,6 +111,7 @@ class MainActivity : ComponentActivity() {
 
                         Spacer(modifier = Modifier.size(15.dp))
 
+                        // Reset Button that clears the values
                         Button(onClick = {
                             timeOfDay = ""
                             mealSuggestion = ""
@@ -127,6 +133,7 @@ class MainActivity : ComponentActivity() {
 
                     Spacer(modifier = Modifier.height(5.dp))
 
+                    // Meal suggestion output from Find meal onClick
                     Text(
                         modifier = Modifier
                             .fillMaxWidth()
