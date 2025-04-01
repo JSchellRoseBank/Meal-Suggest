@@ -36,6 +36,10 @@ class MainActivity : ComponentActivity() {
                 mutableStateOf("")
             }
 
+            var timeOfDay by remember {
+                mutableStateOf("")
+            }
+
             MealSuggestTheme {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -50,8 +54,10 @@ class MainActivity : ComponentActivity() {
                     )
 
                     OutlinedTextField(
-                        value = "",
+                        value = timeOfDay,
                         onValueChange = {
+                            text ->
+                            timeOfDay = text
                         },
                         placeholder = {
                             Text(text = "Enter Time Of Day Here")
@@ -67,7 +73,7 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-                    Text(text = "Meal Suggestion: \n\n")
+                    Text(text = "Meal Suggestion: $mealSuggestion")
 
                 }
             }
