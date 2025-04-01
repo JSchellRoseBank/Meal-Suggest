@@ -65,7 +65,18 @@ class MainActivity : ComponentActivity() {
                     )
 
                     Row {
-                        Button(onClick = {}) {
+                        Button(onClick = {
+                            mealSuggestion = when(timeOfDay){
+                                "Morning" -> "Scrambled eggs with spinach, tomatoes, and whole-grain toast"
+                                "Mid-morning snack" -> "Greek yogurt with honey and berries"
+                                "Afternoon" -> "Grilled chicken salad with mixed greens, avocado, and a lemon vinaigrette"
+                                "Afternoon snack" -> "Cottage cheese with sliced cucumber and a sprinkle of paprika"
+                                "Evening" -> "Stir-fried beef or tempeh with brown rice and mixed vegetables"
+                                "Evening snack" -> "A handful of mixed nuts and dark chocolate"
+                                else -> "Error"
+                            }
+                            println(timeOfDay)
+                        }) {
                             Text(text = "Find Meal")
                         }
                         Button(onClick = {}) {
