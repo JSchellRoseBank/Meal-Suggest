@@ -87,7 +87,10 @@ class MainActivity : ComponentActivity() {
                         }) {
                             Text(text = "Find Meal")
                         }
-                        Button(onClick = {}) {
+                        Button(onClick = {
+                            timeOfDay = ""
+                            mealSuggestion = ""
+                        }) {
                             Text(text = "Reset")
                         }
                     }
