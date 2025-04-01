@@ -4,12 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
@@ -21,6 +25,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
@@ -43,9 +49,11 @@ class MainActivity : ComponentActivity() {
             MealSuggestTheme {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.fillMaxSize())
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(start = 30.dp, top = 60.dp, end = 30.dp)
+                )
                 {
-                    Spacer(modifier = Modifier.size(30.dp))
 
                     Text(
                         text = "Meal Suggest",
@@ -53,7 +61,12 @@ class MainActivity : ComponentActivity() {
                         fontWeight = FontWeight.Black
                     )
 
+                    Spacer(modifier = Modifier.size(30.dp))
+
                     OutlinedTextField(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(12.dp))
+                            .border(1.dp, Color.Gray, shape = RoundedCornerShape(12.dp)),
                         value = timeOfDay,
                         onValueChange = {
                             text ->
@@ -65,6 +78,8 @@ class MainActivity : ComponentActivity() {
                         keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences)
                     )
 
+                    Spacer(modifier = Modifier.size(10.dp))
+
                     Row {
                         Button(onClick = {
                             mealSuggestion = when(timeOfDay){
@@ -72,7 +87,7 @@ class MainActivity : ComponentActivity() {
                                 "Mid-morning" -> "Greek yogurt with honey and berries"
                                 "Afternoon" -> "Grilled chicken salad with mixed greens, avocado, and a lemon vinaigrette"
                                 "Mid-afternoon" -> "Cottage cheese with sliced cucumber and a sprinkle of paprika"
-                                "Evening" -> "Stir-fried beef or tempeh with brown rice and mixed vegetables"
+                                "Evening" -> "Stir-fried beef with mixed vegetables"
                                 "Evening snack" -> "A handful of mixed nuts and dark chocolate"
                                 else -> "Invalid time of day, please try the following: " +
                                         "\n - Morning" +
@@ -85,8 +100,12 @@ class MainActivity : ComponentActivity() {
                             println(timeOfDay)
                             println(mealSuggestion)
                         }) {
+
                             Text(text = "Find Meal")
                         }
+
+                        Spacer(modifier = Modifier.size(15.dp))
+
                         Button(onClick = {
                             timeOfDay = ""
                             mealSuggestion = ""
@@ -95,7 +114,25 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-                    Text(text = "Meal Suggestion: \n\n $mealSuggestion")
+                    Spacer(modifier = Modifier.height(15.dp))
+
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 25.dp)
+                            .align(Alignment.Start),
+                        text = "Meal Suggestion:",
+                    )
+
+                    Spacer(modifier = Modifier.height(5.dp))
+
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 25.dp, end = 25.dp)
+                            .align(Alignment.Start),
+                        text = mealSuggestion
+                    )
 
                 }
             }
