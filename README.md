@@ -4,7 +4,7 @@
 
 Link to repo: https://github.com/JSchellRoseBank/Meal-Suggest
 
-Link to youtube video:
+Link to youtube video: https://youtube.com/shorts/qhfNzFupAqo?feature=share
 
 ## Purpose
 The purpose of the app is to provide meal suggestions to users that are looking for meal options for different times of day.
